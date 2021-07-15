@@ -13,7 +13,7 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-const uri = `mongodb+srv://pharaohnof:${process.env.DB_PW}@cluster0.9js9i.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://pharaohnof:jennY8675309@cluster0.9js9i.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 
 
 
