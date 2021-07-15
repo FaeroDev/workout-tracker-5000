@@ -70,6 +70,17 @@ router.post('/api/workouts', (req, res) => {
   );
 })
 
+router.put('/api/workouts/:id', (req, res) => {
+  Workout.findByIdAndUpdate(
+    req.params.id, {
+      $push: {exercises: [req.params.body]}
+    },
+    {new: true, runValidators: true}
+  )
+  .then((data) => res.json(data))
+  .catch(err => res.status(400).json(err))
+})
+
 
 
 
