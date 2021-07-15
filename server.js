@@ -11,13 +11,15 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(express.static("public"));
 
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect('mongodb://localhost/workout', {
   useNewUrlParser: true,
   useFindAndModify: false,
   useUnifiedTopology: true,
+  useCreateIndex: true
 });
+
+app.use(express.static("public"));
 
 // console.log(process.env) //remove later
 // routes
@@ -27,3 +29,5 @@ app.use(require("./routes/view/home-routes"))
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
 });
+
+// process.env.MONGODB_URI
