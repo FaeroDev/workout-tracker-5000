@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3001;
 
 const app = express();
 
-app.use(morgan('dev'))
+// app.use(morgan('dev'))
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -28,7 +28,7 @@ mongoose.connect(
 
 app.use(express.static("public"));
 
-// console.log(process.env) //remove later
+console.log(process.env) //remove later
 // routes
 app.use(require("./routes/api/api-routes"));
 app.use(require("./routes/view/home-routes"))
