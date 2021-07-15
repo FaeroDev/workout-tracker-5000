@@ -13,10 +13,12 @@ app.use(morgan('dev'))
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+const uri = `mongodb+srv://pharaohnof:${process.env.DB_PW}@cluster0.9js9i.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+
 
 
 mongoose.connect(
-  process.env.MONGODB_URI ||'mongodb://localhost/workout',
+  uri,
   {
     useNewUrlParser: true, 
     useUnifiedTopology: true,
@@ -26,7 +28,7 @@ mongoose.connect(
 
 app.use(express.static("public"));
 
-console.log(process.env) //remove later
+// console.log(process.env) //remove later
 // routes
 app.use(require("./routes/api/api-routes"));
 app.use(require("./routes/view/home-routes"))
@@ -36,3 +38,4 @@ app.listen(PORT, () => {
 });
 
 // process.env.MONGODB_URI
+// ||'mongodb://localhost/workout'

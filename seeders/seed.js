@@ -1,11 +1,20 @@
 const mongoose = require('mongoose');
 const db = require('../models');
+require("dotenv").config()
 
-mongoose.connect('mongodb://localhost/workout', {
+// const uri = `${process.env.MONGODB_URI}`
+const uri = `mongodb+srv://pharaohnof:${process.env.DB_PW}@cluster0.9js9i.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+
+
+mongoose.connect(uri, {
   useNewUrlParser: true,
   useFindAndModify: false,
   useUnifiedTopology: true,
 });
+
+
+
+
 
 const workoutSeed = [
   {
@@ -135,3 +144,4 @@ db.Workout.deleteMany({})
     console.error(err);
     process.exit(1);
   });
+  // 'mongodb://localhost/workout'
