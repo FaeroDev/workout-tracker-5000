@@ -33,13 +33,14 @@ router.post("/api/workouts", ({ body }, res) => {
 });
 
 router.put("/api/workouts/:id", ({ body, params }, res) => {
-  db.findByIdAndUpdate(params.id, { $push: { exercises: body }},
+  db.findByIdAndUpdate(
+    params.id,
+    { $push: { exercises: body } }
     // {new: true, runValidators: true}
-    
-    )
+  )
     .then((dbdata) => {
-      console.dir(dbdata)
-      res.status(200).json(dbdata)
+      console.dir(dbdata);
+      res.status(200).json(dbdata);
     })
     .catch((err) => res.status(400).json(err));
 });
